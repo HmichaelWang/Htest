@@ -1,0 +1,28 @@
+<ion-view cache-view="false" hide-nav-bar="true">
+  <ion-content>
+
+    <div class="row responsive-sm padding">
+      <div class="col" style="margin-top: 4rem">
+
+        <div class="wx-gray" style="font-size: 20px;margin-bottom: 20px">请输入海信交易结算系统的账号</div>
+        <div class="list">
+          <label class="item item-input">
+            <i class="icon ion-person coC0"></i>
+            <input style="margin-left: 10px;font-size: 14px" type="text" placeholder="请输入账号" ng-model="user.name">
+          </label>
+        </div>
+        <div class="list">
+          <label class="item item-input">
+            <i class="icon ion-ios-locked coC0"></i>
+            <input style="margin-left: 10px" type="password" placeholder="请输入密码" ng-model="user.password">
+          </label>
+        </div>
+
+        <div class="loginButton">
+          <button class="button button-block button-positive" style="border-radius: 10px" ng-click="login()"> 登&nbsp&nbsp&nbsp录 </button>
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+</ion-view>

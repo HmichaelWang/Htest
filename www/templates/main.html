@@ -1,0 +1,144 @@
+<ion-view view-title="主页" hide-nav-bar="true">
+
+  <style>
+    .neu-tabs-dv-one.active,.neu-tabs-dv-one.activated{
+      border-color: #eeeeee;
+      background-color: #eeeeee;
+    }
+
+  </style>
+
+  <ion-content style="background-color: #e2e5e5">
+
+    <div  id="parentDv" style="position: relative;background-color: white"></div>
+    <div ng-if="!isChecked" id="warningDv" class="neu-warning-dv">
+      <img style="background-color: #e2e5e5;height: 10em" src="img/warning.jpg">
+    </div>
+
+    <!--    <div class="neu-pd-auto wx-black neu-font-8" >结算管理</div>
+        <div class="border-TB">
+          <div class="row stable-bg" style="padding: 0">
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(6)">
+              <img class="neu-img-h-w" src="img/cyqr.png">
+              <p class="neu-fontBlack pd-top10">差异确认</p>
+              <span ng-if="1!=0" class="neu-badge neu-badge-pos">{{2}}</span>
+            </div>
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(9)">
+              <img class="neu-img-h-w" src="img/cycx.png">
+              <p class="neu-fontBlack pd-top10">差异查询</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(7)">
+              <img class="neu-img-h-w" src="img/fyqr.png">
+              <p class="neu-fontBlack pd-top10">费用确认</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+          </div>
+          <div class="row stable-bg" style="padding: 0;">
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(10)">
+              <img class="neu-img-h-w" src="img/fycx.png">
+              <p class="neu-fontBlack pd-top10">费用查询</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="neu-pd-auto wx-black neu-font-8" style="padding-top: 13px">消息</div>
+        <div class="border-TB">
+          <div class="row stable-bg" style="padding: 0;">
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(8)">
+              <img class="neu-img-h-w" src="img/dbxx.png">
+              <p class="neu-fontBlack pd-top10">督办消息</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(11)">
+              <img class="neu-img-h-w" src="img/dbcx.png">
+              <p class="neu-fontBlack pd-top10">督办查询</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="neu-pd-auto wx-black neu-font-8">申诉处理</div>
+        <div class="border-TB">
+          <div class="row stable-bg" style="padding: 0;">
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(1)">
+              <img class="neu-img-h-w" src="img/zzhdd.png">
+              <p class="neu-fontBlack pd-top10">政策核对单</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(2)">
+              <img class="neu-img-h-w" src="img/hdcx.png">
+              <p class="neu-fontBlack pd-top10">核对查询</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(3)">
+              <img class="neu-img-h-w" src="img/dzqr.png">
+              <p class="neu-fontBlack pd-top10" style="padding-top: 10px">对账确认</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+          </div>
+          <div class="row stable-bg" style="padding: 0;">
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" ng-click="toState(4)">
+              <img class="neu-img-h-w" src="img/fldz.png">
+              <p class="neu-fontBlack pd-top10">返利对账</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+            <div class="col-33 neu-tabs-dv-one neu-iconPd" style="padding: 20px 0" ng-click="toState(5)">
+              <img class="neu-img-h-w" src="img/dzcx.png">
+              <p class="neu-fontBlack pd-top10">对账查询</p>
+              <span ng-if="0!=0" class="neu-badge neu-badge-pos">{{0}}</span>
+            </div>
+          </div>
+        </div>-->
+
+
+<!--    <div class="padding wx-black neu-font-8 stable-bg" >申诉处理</div>
+    <div class="stable-bg row" style="padding-top: 10px">
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(1)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray neu-pad-20-LR">政策核对单</p>
+      </div>
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(2)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray neu-pad-20-LR">核对单查询</p>
+      </div>
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(3)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray neu-pad-20-LR">对账单确认</p>
+      </div>
+    </div>
+    <div class="stable-bg row" style="padding: 20px 5px 25px 5px;">
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(4)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray neu-pad-20-LR">返利对账差异申诉</p>
+      </div>
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(5)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray neu-pad-20-LR">对账差异申诉查询</p>
+      </div>
+    </div>
+
+    <div class="padding wx-black neu-font-8 stable-bg" style="margin-top: 10px">结算管理</div>
+    <div class="stable-bg row" style="padding-top: 10px">
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(6)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray">差异确认</p>
+      </div>
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(7)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray">费用确认</p>
+      </div>
+    </div>
+
+    <div class="padding wx-black neu-font-8 stable-bg" style="margin-top: 10px">消息</div>
+    <div class="stable-bg row" style="padding-top: 10px">
+      <div class="col-33 neu-tabs-dv-one" ng-click="toState(8)">
+        <img class="neu-img-h-w" src="img/testForMain.png">
+        <p class="wx-gray">督办消息</p>
+      </div>
+    </div>-->
+
+
+  </ion-content>
+</ion-view>

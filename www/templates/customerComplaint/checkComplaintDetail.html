@@ -1,0 +1,83 @@
+<ion-view view-title="政策核对单申诉">
+
+  <style type="text/css">
+    input[disabled], input[readonly]:not(.cloned-text-input), select[disabled], select[readonly], textarea[disabled], textarea[readonly]:not(.cloned-text-input) {
+      background-color: white;
+      cursor: not-allowed;
+    }
+  </style>
+
+<!--  <ion-nav-buttons side="left">
+    <a class="button button-icon ion-ios-arrow-left" ng-click="$ionicGoBack()"></a>
+  </ion-nav-buttons>-->
+
+  <ion-content class="has-footer marT-55">
+    <div class="light-bg" style="height: 100%;">
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">客户</div>
+        <div class="neu-fontGray neu-list-R">镇江市卓先电器有限公司</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">对账公司</div>
+        <div class="neu-fontGray neu-list-R">海信南京分公司</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">单据类型</div>
+        <div class="neu-fontGray neu-list-R">政策核对单</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">单据号</div>
+        <div class="neu-fontGray neu-list-R">ZCHD00163</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">对账期间</div>
+        <div class="neu-fontGray neu-list-R">2016-8</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">申诉大类</div>
+        <div class="neu-fontGray neu-list-R">返利确认金额</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">申诉小类</div>
+        <div class="neu-fontGray neu-list-R">金额问题</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">原单据金额</div>
+        <div class="neu-fontGray neu-list-R">{{4000 | currency:"￥"}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">客户确认金额</div>
+        <div class="neu-fontGray neu-list-R">{{4500 | currency:"￥"}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top">
+        <div class="neu-fontBlack neu-list-L" style="padding-left: 15px;height: 40px;line-height: 40px;">业务确认金额：</div>
+        <div class="neu-fontGray neu-list-inputR">
+          <input class="neu-input-border neu-input-common" style="text-align: right;border: solid 1px #A1A1A1" type="number" />
+        </div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">原因分类</div>
+        <div class="neu-fontGray neu-list-R">
+          <input class="neu-input-border neu-input-common" style="border: solid 1px #A1A1A1" readonly type="text" ng-click="showPopup()" ng-model="selData" placeholder="请选择">
+        </div>
+      </div>
+      <div class="neu-font-7 neu-border-top">
+        <div class="neu-fontBlack neu-list-L" style="padding-left: 15px;height: 40px;line-height: 40px;">申诉回复：</div>
+        <div class="neu-fontGray neu-list-inputR" style="height: 65px">
+          <textarea class="neu-input-border neu-textarea-common"></textarea>
+        </div>
+      </div>
+
+    </div>
+
+  </ion-content>
+
+  <ion-footer-bar class="stable-bg">
+    <button class="button button-clear button-positive" style="width: 25%" ng-click="approvalPass()">通过</button>
+    <button class="button button-clear button-assertive" style="width: 25%" ng-click="approvalReject()">驳回</button>
+    <button class="button button-clear button-stable" style="width: 25%" ng-click="approvalSolve()">待解决</button>
+    <button class="button button-clear button-dark" style="width: 25%" ng-click="$ionicGoBack()">返回</button>
+  </ion-footer-bar>
+
+
+</ion-view>

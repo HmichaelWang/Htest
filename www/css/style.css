@@ -1,0 +1,268 @@
+/* Empty. Add your own CSS if you like */
+
+.platform-ios.platform-cordova:not(.fullscreen) .neu-search-item{margin: 3px;}
+
+/*修改框架弹出窗样式-start*/
+.popup-container .popup {
+  width: 70%;
+  max-width: 100%;
+  max-height: 90%;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.9);
+  display: flex;
+  -webkit-box-direction: normal;
+  -webkit-box-orient: vertical;
+  flex-direction: column;
+}
+
+.popup-buttons .button {
+  -webkit-box-flex: 1;
+  flex: 1;
+  display: block;
+  min-height: 35px;
+  height: 35px;
+  border-radius: 5px;
+  line-height: 20px;
+  margin-top: 10px;
+  margin-right: 1rem;
+  margin-left: 8px;
+  border-color: #bfbfbf;
+}
+.popup-buttons .button:last-child {
+  margin-right: 8px;
+}
+/*修改框架弹出窗样式-end*/
+.scroll-view.scroll-x {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+/*折叠列表-start*/
+.list .item.item-accordion {
+  line-height: 25px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.1s all linear;
+  background-color: #f7f7f7;
+  /*white-space: inherit;*/
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
+}
+
+.neu-list-item {
+  border: none;
+}
+/*折叠列表-end*/
+
+/*.scroll-content{background: #f8f8f8}*/
+.neu-tabs-dv-one{position: relative;background-color: #f8f8f8;text-align:center;width: 5em;height: 7em;}
+.neu-img-h-w{height: 2em;width: 2em;}
+.neu-img-mt{margin-top: 15px}
+.neu-main-dv{
+  position: absolute;
+  background-color: white;
+  text-align:center;
+}
+.neu-main-dv3{
+  width: 33.3%;
+  height: 100px;
+}
+.neu-main-dv4{
+  width: 25%;
+  height: 100px;
+}
+
+.all-detail{}
+.all-detail .neu-list .item{padding: 10px}
+.all-detail .neu-list .item .row{padding: 0}
+.neu-iconPd{padding: 20px 0 15px 0;}
+.neu-badge{
+  background-color: #ef473a;
+  color: #fff;
+  z-index: 1;
+  display: inline-block;
+  padding: 0 4px;
+  min-width: 5px;
+  border-radius: 10px;
+  vertical-align: baseline;
+  text-align: center;
+  white-space: nowrap;
+  font-weight: 350;
+  font-size: 12px;
+  line-height: 14px;
+}
+.neu-badge-pos{
+  position: absolute;
+  top: 10px;
+  left: 53%;
+}
+.border-TB{
+  border-bottom: solid 5px #f8f8f8;
+  border-top: solid 5px #f8f8f8;
+}
+.neu-pd-auto{
+  padding:13px 10px 10px 10px;
+}
+.neu-pd-title{
+  position: absolute;
+  background-color: #e2e5e5;
+  height: 40px;
+  width: 100%;
+}
+
+
+.co7{color: #777;}
+.coC0{color: #c0c0c0}
+.coHx{color: #009E9F}
+.neu-font-9{font-size: 0.9rem}
+.neu-font-8{font-size: 0.8rem}
+.neu-font-7{font-size: 0.7rem}
+.neu-font-6{font-size: 0.6rem}
+.neu-font-5{font-size: 0.6rem}
+.neu-warning-dv{text-align: center;height: 750px;padding-top: 180px}
+
+.wx-black{color: #000000;}
+.wx-gray{color: #888888}
+
+.pd-top10{padding-top: 10px}
+
+.neu-stable-bar{height: 55px;background-color: #009E9F}
+.neu-tab-top{padding: 10px 0 10px 0;text-align: center}
+.neu-tab{display: inline-block;width: 25%;height: 35px;line-height: 35px;border: solid 1px #FFFFFF;background-color: #009E9F;color: #FFFFFF}
+.neu-tab-left{border-top-left-radius: 5px;border-bottom-left-radius: 5px;}
+.neu-tab-comm{border-left-width: 0; border-right-width: 0;}
+.neu-tab-comm1{border-left-width: 1px; border-right-width: 0;}
+.neu-tab-right{border-top-right-radius: 5px;border-bottom-right-radius: 5px}
+.neu-tab-selected{background-color: #FFFFFF;color: #009E9F}
+
+.neu-background-hx{background-color: #009E9F}
+.neu-tab2-top{padding: 10px 0 10px 0;text-align: center;background-image: none;}
+.neu-tab2{display: inline-block;width: 25%;height: 35px;line-height: 35px;border: solid 1px #FFFFFF;background-color: #009E9F;color: #FFFFFF}
+.neu-tab2-left{border-top-left-radius: 5px;border-bottom-left-radius: 5px;}
+.neu-tab2-comm{border-left-width: 0; border-right-width: 0;}
+.neu-tab2-comm1{border-left-width: 1px; border-right-width: 0;}
+.neu-tab2-right{border-top-right-radius: 5px;border-bottom-right-radius: 5px}
+.neu-tab2-selected{background-color: #FFFFFF;color: #009E9F}
+.neu-list-RL{position: absolute;/*right: 15%*/}
+
+.neu-search{margin:0}
+.neu-search .list-inset{background: #F7F7F7;/*border-bottom:solid 1px #d7d8d8;*/padding:10px 10px 10px 10px;margin: 0;position:relative;}
+.neu-search .list-inset .item-input{padding:2px 0 0 10px;border-radius: 5px;font-size:0.6rem;color:#bdbdbd;width:100%;}
+.neu-search .list-inset .item-input input{font-size:0.6rem;}
+.neu-search .list-inset .search{border:none;background:none;font-size:1rem;width: 1.5rem}
+
+/*公共列表样式 start*/
+.neu-list {position: relative;padding-top: 1px; padding-bottom: 1px; padding-left: 0; margin-bottom: 20px;}
+.neu-list .item {padding: 6px 20px ;font-size: 0.7rem;background-color: #fff;color: #444; position: relative;
+  z-index: 2; display: block;margin: -1px;border: solid 1px #ddd;}
+.neu-list .item .button .icon {padding-top: 3px; margin-left: 80px;}
+.neu-list .item p{font-size:0.7rem;padding:2px 0;width: 95%}
+.neu-Fleft{float: left;}
+.neu-Fright{float: right;}
+
+/*公共列表样式 end*/
+
+.marT-45{margin-top: 45px}
+.marT-52{margin-top: 52px}
+.marT-55{margin-top: 55px}
+.marT-100{margin-top: 100px}
+.narT-107{margin-top:107px;}
+.marT-110{margin-top: 110px}
+
+
+.neu-h40{height: 40px}
+.neu-h35{height: 35px}
+.neu-border-top{border-top: solid 1px #ddd}
+.neu-border-bottom{border-bottom: solid 1px #ddd}
+.neu-border-btm{border-bottom: solid 1px #ddd}
+.neu-list-L{padding-left: 15px;float: left;width: 40%;height: 40px;line-height: 40px}
+.neu-list-R{padding-right: 15px;float: right;width: 60%;height: 40px;line-height: 40px;text-align: right;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;}
+
+.neu-list-L40{padding-left: 15px;float: left;width: 40%;height: 40px;line-height: 40px}
+.neu-list-R40{padding-right: 15px;float: right;width: 60%;height: 40px;line-height: 40px;text-align: right;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;}
+
+.neu-list-AL{padding-left: 15px;float: left;width: 40%;padding-top: 5px;padding-bottom: 5px}
+.neu-list-AR{padding-right: 15px;float: right;width: 60%;padding-top: 5px;padding-bottom: 5px;text-align: right;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;}
+
+.neu-list-inputR{padding-right: 15px;float: right;width: 60%;height: 35px;line-height: 35px;text-overflow:ellipsis;overflow: hidden;white-space: nowrap;}
+.neu-list-divR{padding-right: 15px;float: right;width: 60%;text-overflow:ellipsis;overflow: hidden;}
+.neu-fontBlack {color: #4d4d4d}
+.neu-fontGray {color: #A2A2A2}
+.neu-sp-submit{position: absolute;bottom: 0;width: 100%}
+.neu-input-common{width: 100%;height: 30px; line-height: 30px; margin-top: 2px;}
+.neu-input-common1{width: 100%;height: 30px; line-height: 30px; margin-top: 5px;}
+.neu-textarea-common{overflow:visible;width: 100%;height: 60px; line-height: 20px; margin-top: 3px;padding: 0 5px;}
+.neu-textarea-common1{overflow:visible;width: 100%;height: 60px; line-height: 20px; margin-top: 5px;padding: 0 5px;}
+.neu-input-border{border: solid 1px #A1A1A1;border-radius: 5px}
+.popup-icon-close{text-align: left;margin-left: 90%;font-size: 20px}
+.popup-title-close{float: left;font-size: 16px;margin-top: 2px;color: #4d4d4d;margin-left: 10px}
+.auto-line-dv1{display: inline-block;vertical-align: top;padding-left: 15px;width: 40%;line-height: 40px;}
+.auto-line-dv2{display: inline-block;width: 58%;padding: 10px 13px 10px 0;}
+.tip{text-align: center;font-size: 0.6rem;color: #4c4d4c;}
+.top-search-btn{height: 30px;border-radius: 5px;}
+.top-search-dv{width: 25%;text-align: center;line-height: 34px;margin-top: -1px}
+.neu-pad-20-LR{padding: 0 20px;}
+.neu-pad-20-TB{padding: 20px 0;}
+
+.neu-hxBtn{
+  background-color: #009E9F;
+  color: #FFFFFF;
+}
+.icon-list-dowm{
+  position: absolute;
+  top: 0;
+  right: 22px;
+}
+
+
+/*search-modal  start*/
+.pop-checkbox-bg:nth-child(even){background-color: #f1f1f1}
+.neu-search-form{background-color: #f1f1f1}
+.neu-search-form .card, .list-inset {background-color: #f1f1f1;margin:5px}
+.neu-search-item{background-color: #f1f1f1;margin:3px}
+.neu-search-form .label-style{border-radius: 10px;padding: 0 0 0 16px}
+.neu-search-form .item-input .icon {min-width: 14px; margin-right: 10px; color: #b2b2b2;}
+.neu-search-form .card .item:last-child, .list-inset .item:last-child {margin-bottom: -1px; border-radius: 5px;padding: 0 0 0 16px;}
+.neu-search-date-title{line-height:30px;margin-left:5px;margin-top:8px;border-radius: 8px;}
+.neu-search-date-title span{padding-left:9px;color:#4d4d4d;font-weight:500;font-size:0.6rem;}
+.neu-search-date-b{background-color: #f1f1f1;margin:5px;float:left;width:48%;}
+.neu-search-date-e{margin:5px;}
+.neu-search-submit{width: 60%;margin:7rem 20% 0 20%}
+.neu-search-submit-f{margin-top: 8rem}
+.neu-search-submit .submit-button{border-radius: 5px;width: 100%;}
+.neu-search-submit1{bottom: 10px;width: 60%;margin:8rem 20% 0 20%}
+.neu-search-submit1 .submit-button{border-radius: 5px;width: 100%;}
+/*search-modal  end*/
+
+
+
+/*单选框样式  start*/
+.item-radio .radio-icon{
+  position: absolute;
+  top: 0;
+  left: 0!important;
+  right: auto;
+  z-index: 3;
+  visibility: hidden;
+  padding: 14px;
+  height: 100%;
+  font-size: 0px;
+}
+.item-radio .item-content{
+  padding-left: 64px;
+  padding-right: 100%;
+}
+.item-radio input:not(checked) + .radio-content .ion-ios-circle-outline{
+  visibility: visible;
+}
+.item-radio .radio-content .ion-ios-circle-outline:before{
+  font-size: 24px;
+}
+.item-radio .radio-content .ion-ios-checkmark-outline:before{
+  font-size: 24px;
+}
+/*单选框样式   end*/

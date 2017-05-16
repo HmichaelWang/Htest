@@ -1,0 +1,380 @@
+<ion-view view-title="差异确认" hide-nav-bar="true">
+
+  <style type="text/css">
+    input[disabled], input[readonly]:not(.cloned-text-input), select[disabled], select[readonly], textarea[disabled], textarea[readonly]:not(.cloned-text-input) {
+      background-color: white;
+      cursor: not-allowed;
+    }
+  </style>
+
+  <div class="bar neu-tab-top neu-stable-bar" ng-if="isDiff" style="background-image: none">
+    <div style="width: 20%"></div>
+    <div class="neu-tab neu-tab-left" ng-class="{ 'neu-tab-selected':cateShow==1}" ng-click="showCates(1)">我方差异</div>
+    <div class="neu-tab neu-tab-comm" ng-class="{ 'neu-tab-selected':cateShow==2}" ng-click="showCates(2)">我方单据</div>
+    <div class="neu-tab neu-tab-right" ng-class="{ 'neu-tab-selected':cateShow==3}" ng-click="showCates(3)">客户方单据</div>
+    <div style="width: 20%"></div>
+  </div>
+
+  <div class="bar neu-tab-top neu-stable-bar" ng-if="!isDiff" style="background-image: none">
+    <div style="width: 30%"></div>
+    <div class="neu-tab neu-tab-left" ng-class="{ 'neu-tab-selected':cateShow==1}" ng-click="showCates(1)">我方差异</div>
+    <div class="neu-tab neu-tab-right" ng-class="{ 'neu-tab-selected':cateShow==3}" ng-click="showCates(3)">客户方单据</div>
+    <div style="width: 30%"></div>
+  </div>
+
+  <ion-content ng-class="{'has-footer':!hasDeal&&cateShow==1}" style="margin-top: 55px">
+
+    <!--差异明细-->
+    <div class="light-bg" ng-if="cateShow==1" style="height: 100%;">
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">客户</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" overflow-scroll="false">{{differDetailInfo.customerName}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">对账公司</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{differDetailInfo.fiBookName}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异明细号</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{differDetailInfo.diffDetailNo}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">商品型号</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{differDetailInfo.diffContext}}</ion-scroll></div>
+      </div>
+
+      <ion-list>
+        <ion-item style="padding: 0"
+                  ng-click="toggleGroup(isArrShow[0])"
+                  ng-class="{active: isGroupShown(isArrShow[0])}">
+          <div class="item item-button-right" style="padding-top: 10px;padding-bottom: 10px">
+            <a ng-class="isGroupShown(isArrShow[0]) ? 'coHx' : 'neu-fontBlack'">
+              <span class="neu-font-7">差异详细信息</span>
+            </a>
+            <button class="button button-clear button-stable" style="top: 5px;right: 0;">
+              <i class="icon" ng-class="isGroupShown(isArrShow[0]) ? 'ion-ios-arrow-down coHx':'ion-ios-arrow-right' "></i>
+            </button>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">差异日期</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.diffDate}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">大连锁名称</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.csTypeName}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">单据类型</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.csDocTypeName}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">单据明细类型</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.csDetailTypeName}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">差异系统</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.dealSysName}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">差异单据类型</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.hxDocTypeName}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">差异属性</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.diffFlagName}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">利润中心</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.prfcName}}</div>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">客户单号</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.csDocNo}}</div>
+          </div>
+        </ion-item>
+
+        <!--未达-->
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7" ng-if="isDiff">
+            <div class="neu-fontBlack neu-list-AL">海信方单据号</div>
+            <div class="neu-fontGray neu-list-AR">{{differDetailInfo.hxDocNo}}</div>
+          </div>
+        </ion-item>
+
+      </ion-list>
+
+      <!--<div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异日期</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.diffDate}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">大连锁名称</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.csTypeName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">单据类型</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.csDocTypeName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">单据明细类型</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.csDetailTypeName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异系统</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.dealSys}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异单据类型</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.hxDocTypeName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异属性</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.diffFlagName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">利润中心</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.prfcName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">客户单号</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.csDetailLineNo}}</div>
+      </div>
+
+      &lt;!&ndash;未达&ndash;&gt;
+      <div class="neu-font-7 neu-border-top neu-h40" ng-if="isDiff">
+        <div class="neu-fontBlack neu-list-L">海信方单据号</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.hxDocNo}}</div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">商品型号</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.diffContext}}</div>
+      </div>-->
+
+      <div class="neu-font-7 neu-h40" ng-class="{'neu-border-top':isArrShow[0].show}">
+        <div class="neu-fontBlack neu-list-L">差异大类</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.diffDesc}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异小类</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.childDiffTypeDesc}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异数量</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.diffQty}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">差异金额</div>
+        <div class="neu-fontGray neu-list-R">{{differDetailInfo.diffHsamt | currency:""}}</div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top">
+        <div class="neu-fontBlack auto-line-dv1">差异说明</div>
+        <div class="neu-fontGray neu-list-R" ng-if="differDetailInfo.remark.length<13">{{differDetailInfo.remark}}</div>
+        <div class="neu-fontGray auto-line-dv2" ng-if="differDetailInfo.remark.length>=13">{{differDetailInfo.remark}}</div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-border-btm" ng-if="!hasDeal" style="height: 68px">
+        <div class="neu-fontBlack neu-list-L" style="padding-left: 15px;height: 40px;line-height: 40px;">差异确认说明：</div>
+        <div class="neu-fontGray neu-list-inputR" style="height: 65px">
+          <textarea class="neu-input-border neu-textarea-common" ng-model="text.confirmDesc"></textarea>
+        </div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-border-bottom" ng-if="hasDeal">
+        <div class="neu-fontBlack auto-line-dv1">差异确认说明</div>
+        <div class="neu-fontGray auto-line-dv2">{{differDetailInfo.confirmDesc}}</div>
+      </div>
+
+    </div>
+
+    <!--客户方单据-->
+    <div class="light-bg" ng-if="cateShow==3" style="height: 100%;">
+      <!--<div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">客户</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.customerName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">对账公司</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.fiBookName}}</div>
+      </div>-->
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">结算单号</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.jsOrderNo}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">采购凭证</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{customerInfo.csOrderVoucher}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">行项目</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.itemNo}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">入库单号</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.inboundOrderNo}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">记账日期</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.csVoucherDate}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">商品型号</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{customerInfo.materialModel}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">商品名称</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{customerInfo.materialName}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">入库金额</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.csAmt | currency:""}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">数量</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.csQty}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">单价</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.csPrice | currency:""}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">率返</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.discountRate}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">台返</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.singleAmt | currency:""}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">折后金额</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.lastAmt | currency:""}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">配送地点</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{customerInfo.deliveryLoc}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">随货单号</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.manifestNo}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">利润中心</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.prfcName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-border-bottom neu-h40">
+        <div class="neu-fontBlack neu-list-L">核对状态</div>
+        <div class="neu-fontGray neu-list-R">{{customerInfo.hdStatusName}}</div>
+      </div>
+    </div>
+
+    <!--海信方单据-->
+    <div class="light-bg" ng-if="cateShow==2" style="height: 100%;">
+      <!--<div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">客户</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.customerName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">对账公司</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.fiBookName}}</div>
+      </div>-->
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">订单类型</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.hxDocTypeName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">订单号</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.orderNo}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">订单日期</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.orderCreateDate}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">行项目</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.sendLineNo}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">商品型号</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{hisenseInfo.materialModel}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">未核数量</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.khdQty}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">未核金额</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.khdAmt | currency:""}}</div>
+      </div>
+<!--      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">已核数量</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.hdQty}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">已核金额</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.hdAmt | currency:""}}</div>
+      </div>-->
+      <!--寄售补货订单---start-->
+      <div class="neu-font-7 neu-border-top neu-h40" ng-if="hisenseInfo.hxDocType=='JS_BH_ORDER'">
+        <div class="neu-fontBlack neu-list-L">寄售未结算数量</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.soQty}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40" ng-if="hisenseInfo.hxDocType=='JS_BH_ORDER'">
+        <div class="neu-fontBlack neu-list-L">寄售未结算金额</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.soAmt | currency:""}}</div>
+      </div>
+      <!--寄售补货订单---end-->
+      <div class="neu-font-7 neu-border-top neu-h40" ng-if="hisenseInfo.hxDocType=='BZ_ORDER'">
+        <div class="neu-fontBlack neu-list-L">过账数量</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.postQty}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40" ng-if="hisenseInfo.hxDocType=='BZ_ORDER'">
+        <div class="neu-fontBlack neu-list-L">过账金额</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.postAmt | currency:""}}</div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-border-bottom neu-h40">
+        <div class="neu-fontBlack neu-list-L">核对状态</div>
+        <div class="neu-fontGray neu-list-R">{{hisenseInfo.statusFlagName}}</div>
+      </div>
+
+    </div>
+
+  </ion-content>
+
+  <ion-footer-bar class="stable-bg" ng-if="!hasDeal&&cateShow==1">
+    <button class="button button-clear" style="width: 5%;"></button>
+    <button class="button button-clear" style="width: 33%;color: #009E9F" ng-click="approvalPass()"><a class="icon ion-android-done coHx"></a>通过</button>
+    <button class="button button-clear" style="width: 24%;"></button>
+    <button class="button button-clear" style="width: 33%;color: #888888;" ng-click="approvalReject()"><a class="icon icon-small ion-android-close neu-fontGray"></a>驳回</button>
+    <button class="button button-clear" style="width: 5%;"></button>
+  </ion-footer-bar>
+
+</ion-view>

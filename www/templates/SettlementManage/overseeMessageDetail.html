@@ -1,0 +1,59 @@
+<ion-view view-title="督办消息处理" hide-nav-bar="true">
+
+  <ion-content ng-class="{'has-footer':!hasDeal}">
+    <div class="light-bg" style="height: 100%;">
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">客户</div>
+        <div class="neu-fontGray neu-list-R">{{contentData.customerName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">对账公司</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" overflow-scroll="false">{{contentData.fiBookName}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">单据类型</div>
+        <div class="neu-fontGray neu-list-R">{{contentData.csDocType}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">消息日期</div>
+        <div class="neu-fontGray neu-list-R">{{contentData.sendDate}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">状态</div>
+        <div class="neu-fontGray neu-list-R">{{contentData.statusFlagName}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L">主题</div>
+        <div class="neu-fontGray neu-list-R"><ion-scroll direction="x" overflow-scroll="false">{{contentData.subject}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top">
+        <div class="neu-fontBlack auto-line-dv1">消息内容</div>
+        <div class="neu-fontGray auto-line-dv2">{{contentData.content}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-border-btm" style="height: 68px" ng-if="!hasDeal">
+        <div class="neu-fontBlack neu-list-L" style="padding-left: 15px;height: 40px;line-height: 40px;">回复内容：</div>
+        <div class="neu-fontGray neu-list-inputR" style="height: 65px;">
+          <textarea class="neu-input-border neu-textarea-common" ng-model="text.confirmDesc"></textarea>
+        </div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-border-bottom" ng-if="hasDeal">
+        <div class="neu-fontBlack auto-line-dv1">回复内容</div>
+        <div class="neu-fontGray auto-line-dv2">{{contentData.replyContent}}</div>
+      </div>
+
+    </div>
+
+  </ion-content>
+
+<!--  <ion-footer-bar class="stable-bg" ng-if="hasDeal">
+    <button class="button button-clear button-dark" style="width: 33%;margin-left: 33%" ng-click="goBack()">返回</button>
+  </ion-footer-bar>-->
+
+  <ion-footer-bar class="stable-bg" ng-if="!hasDeal">
+    <button class="button button-clear button-positive" style="width: 33%;color: #009E9F;margin-left: 33%" ng-click="approvalReply()"><a class="icon ion-ios-undo-outline coHx"></a>回复</button>
+    <!--<button class="button button-clear button-dark" style="width: 33%" ng-click="goBack()">返回</button>-->
+  </ion-footer-bar>
+
+
+</ion-view>

@@ -1,0 +1,30 @@
+<ion-view view-title="返利费用确认" hide-nav-bar="true">
+  <div class="neu-search">
+    <div class="list list-inset">
+      <label class="item item-input">
+        <input type="text" placeholder="客户名称关键字" ng-model="search.customerName">
+        <button class="search ion-ios-search coHx"></button>
+      </label>
+    </div>
+  </div>
+  <ion-content class="marT-52">
+
+    <div style="text-align: center"><ion-spinner icon="android" ng-if="spTip==0"></ion-spinner></div>
+    <ion-list class="neu-list">
+      <div ng-repeat="item in costList | filter:search" ng-click="toDetail(item)">
+        <ion-item class="item-icon-right">
+          <p>客户名称：<span class="wx-gray neu-list-RL">{{item.customerName}}</span></p>
+          <!--<p>大连锁名称：<span class="wx-gray neu-list-RL">{{item.csTypeName}}</span></p>-->
+          <p>费用订单号：<span class="wx-gray neu-list-RL">{{item.csCostNo}}</span></p>
+          <p>行号：<span class="wx-gray neu-list-RL">{{item.csLineNo}}</span></p>
+          <p>日期：<span class="wx-gray neu-list-RL">{{item.csCostDate}}</span></p>
+          <p ng-if="cateShow==1">状态：<span class="wx-gray neu-list-RL">{{item.statusFlagName}}</span></p>
+
+          <i class="icon ion-ios-arrow-right" style="color: #ddd;"></i>
+        </ion-item>
+      </div>
+    </ion-list>
+    <p class="tip" style="margin-top:15px;" ng-if="spTip==1">暂无数据</p>
+  </ion-content>
+
+</ion-view>

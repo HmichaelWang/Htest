@@ -1,0 +1,75 @@
+<div id="searchModal" class="modal" ng-controller="searchModalcontroller">
+
+  <style>
+    .list-inset .item.item-input input{
+      padding-right: 5px;
+    }
+    .platform-ios input[type="date"] {
+      padding-top: 0;
+    }
+    input[disabled], input[readonly]:not(.cloned-text-input), select[disabled], select[readonly], textarea[disabled], textarea[readonly]:not(.cloned-text-input) {
+      background-color: white;
+      cursor: not-allowed;
+    }
+  </style>
+  <ion-header-bar class="bar bar-header frame" style="background-color: #646E76;">
+    <a class="button button-icon ion-android-close" style="color: #FFFFFF;" ng-click="closeModal(false)"></a>
+    <h1 class="title" style="color: #FFFFFF;">高级查询</h1>
+  </ion-header-bar>
+
+  <ion-content class="neu-search-form">
+    <div class="list list-inset">
+      <div class="list list-inset neu-search-item">
+        <label class="item item-input">
+          <input type="text" placeholder="客户名称关键字" ng-model="searchModal.customerName">
+        </label>
+      </div>
+      <div class="list list-inset neu-search-item" ng-click="showDlsPopup()">
+        <label class="item item-input">
+          <input type="text" placeholder="大连锁名称" ng-model="searchModal.csTypeName" readonly />
+          <i class="icon ion-chevron-down"></i>
+        </label>
+      </div>
+      <div class="list list-inset neu-search-item" ng-click="showDjlxPopup()">
+        <label class="item item-input">
+          <input type="text" placeholder="单据类型" ng-model="searchModal.csDocTypeName" readonly />
+          <i class="icon ion-chevron-down"></i>
+        </label>
+      </div>
+      <!--<div class="list list-inset neu-search-item" ng-click="showDjmxlxPopup()">
+        <label class="item item-input">
+          <input type="text" placeholder="单据明细类型" ng-model="searchModal.csDetailTypeName" readonly />
+          <i class="icon ion-chevron-down"></i>
+        </label>
+      </div>-->
+      <div class="list list-inset neu-search-item" ng-click="showCysxPopup()" >
+        <label class="item item-input">
+          <input type="text" placeholder="差异属性" ng-model="searchModal.diffFlag" readonly />
+          <i class="icon ion-chevron-down"></i>
+        </label>
+      </div>
+      <div class="neu-search-date-title">
+        <span>差异日期</span>
+      </div>
+
+      <div class="list list-inset neu-search-date-b">
+        <label class="item item-input" >
+          <input type="date" style="padding-top: 8px" placeholder="开始日期" ng-model="searchModal.begin_date" >
+          <i class="icon ion-calendar"></i>
+        </label>
+      </div>
+      <div class="list list-inset neu-search-date-e">
+        <label class="item item-input" >
+          <input type="date" style="padding-top: 8px" placeholder="结束日期" ng-model="searchModal.end_date" >
+          <i class="icon ion-calendar"></i>
+        </label>
+      </div>
+    </div>
+
+    <div id="searchBtn" class="padding neu-search-submit">
+      <div class="button button-positive submit-button" style="background-color: #009E9F" ng-click="submitSearch()">确认</div>
+    </div>
+
+  </ion-content>
+
+</div>

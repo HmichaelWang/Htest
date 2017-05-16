@@ -1,0 +1,188 @@
+<ion-view view-title="返利费用确认" hide-nav-bar="true">
+
+  <style type="text/css">
+    input[disabled], input[readonly]:not(.cloned-text-input), select[disabled], select[readonly], textarea[disabled], textarea[readonly]:not(.cloned-text-input) {
+      background-color: white;
+      cursor: not-allowed;
+    }
+    .list {
+      position: relative;
+      padding-top: 0px;
+      padding-bottom: 1px;
+      padding-left: 0;
+    }
+    .bar .button.button-clear .icon:before, .bar .button.button-clear.icon:before, .bar button.button-clear .icon:before, .bar button.button-clear.icon:before {
+      font-size: 25px;
+      line-height: 33px;
+    }
+
+  </style>
+
+
+  <ion-content ng-class="{'has-footer':!hasDeal}">
+    <div class="light-bg" style="height: 100%;">
+
+      <!--隐藏列表-->
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L40">客户</div>
+        <div class="neu-fontGray neu-list-R40"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{contentData.customerName}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L40">对账公司</div>
+        <div class="neu-fontGray neu-list-R40"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{contentData.fiBookName}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L40">费用订单号</div>
+        <div class="neu-fontGray neu-list-R40"><ion-scroll direction="x" scrollbar-x="false" overflow-scroll="false">{{contentData.csCostNo}}</ion-scroll></div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L40">行号</div>
+        <div class="neu-fontGray neu-list-R40">{{contentData.csLineNo}}</div>
+      </div>
+
+      <ion-list>
+        <ion-item style="padding: 0"
+                  ng-click="toggleGroup(isArrShow[0])"
+                  ng-class="{active: isGroupShown(isArrShow[0])}">
+          <div class="item item-button-right" style="padding-top: 10px;padding-bottom: 10px">
+            <a ng-class="isGroupShown(isArrShow[0]) ? 'coHx' : 'neu-fontBlack'">
+              <span class="neu-font-7">费用详细信息</span>
+            </a>
+            <button class="button button-clear button-stable" style="top: 5px;">
+              <i class="icon" ng-class="isGroupShown(isArrShow[0]) ? 'ion-ios-arrow-down coHx':'ion-ios-arrow-right' "></i>
+            </button>
+          </div>
+        </ion-item>
+
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">费用订单日期</div>
+            <div class="neu-fontGray neu-list-AR">{{contentData.csCostDate}}</div>
+          </div>
+        </ion-item>
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">费用发生起止日期</div>
+            <div class="neu-fontGray neu-list-AR">{{contentData.csActbDate}}-{{contentData.csActeDate}}</div>
+          </div>
+        </ion-item>
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">费用描述</div>
+            <div class="neu-fontGray neu-list-AR"><ion-scroll direction="x">{{contentData.csCostDesc}}</ion-scroll></div>
+          </div>
+        </ion-item>
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">供应商确认函号</div>
+            <div class="neu-fontGray neu-list-AR">{{contentData.csSupplierLetter}}</div>
+          </div>
+        </ion-item>
+        <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[0])">
+          <div class="neu-font-7">
+            <div class="neu-fontBlack neu-list-AL">门店</div>
+            <div class="neu-fontGray neu-list-AR"><ion-scroll direction="x">{{contentData.csStoreName}}</ion-scroll></div>
+          </div>
+        </ion-item>
+      </ion-list>
+
+      <ion-list>
+        <div>
+          <ion-item style="padding: 0;"
+                    ng-click="toggleGroup(isArrShow[1])"
+                    ng-class="{active: isGroupShown(isArrShow[1])}">
+            <div class="item item-button-right" style="padding-top: 10px;padding-bottom: 10px">
+              <a ng-class="isGroupShown(isArrShow[1]) ? 'coHx' : 'neu-fontBlack'">
+                <span class="neu-font-7">商品详细信息</span>
+              </a>
+              <button class="button button-clear button-stable"  style="top: 5px;">
+                <i class="icon" ng-class="isGroupShown(isArrShow[1]) ? 'ion-ios-arrow-down coHx':'ion-ios-arrow-right' "></i>
+              </button>
+            </div>
+          </ion-item>
+
+          <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[1])">
+            <div class="neu-font-7">
+              <div class="neu-fontBlack neu-list-AL">品牌</div>
+              <div class="neu-fontGray neu-list-AR">{{contentData.brandName}}</div>
+            </div>
+          </ion-item>
+
+          <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[1])">
+            <div class="neu-font-7">
+              <div class="neu-fontBlack neu-list-AL">商品名称</div>
+              <div class="neu-fontGray neu-list-AR"><ion-scroll direction="x">{{contentData.materialName}}</ion-scroll></div>
+            </div>
+          </ion-item>
+
+          <ion-item class="item-accordion neu-list-item" ng-show="isGroupShown(isArrShow[1])">
+            <div class="neu-font-7">
+              <div class="neu-fontBlack neu-list-AL">商品型号</div>
+              <div class="neu-fontGray neu-list-AR"><ion-scroll direction="x">{{contentData.materialModel}}</ion-scroll></div>
+            </div>
+          </ion-item>
+
+        </div>
+      </ion-list>
+
+      <div class="neu-font-7 neu-h40" ng-class="{'neu-border-top':isArrShow[1].show}">
+        <div class="neu-fontBlack neu-list-L40">数量</div>
+        <div class="neu-fontGray neu-list-R40">{{contentData.qty}}</div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L40">金额</div>
+        <div class="neu-fontGray neu-list-R40">{{contentData.amt | currency:""}}</div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-h40" ng-if="!hasDeal">
+        <div class="neu-fontBlack neu-list-L40">费用明细状态</div>
+        <div class="neu-fontGray neu-list-R40">{{contentData.statusFlagName}}</div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L40">对应业务单据</div>
+        <div class="neu-fontGray neu-list-R40" ng-if="hasDeal">{{contentData.hxDocTypeName}}</div>
+        <div class="neu-fontGray neu-list-R40" ng-if ="!hasDeal" style="width: 60%;">
+          <input type="text" class="neu-input-border neu-input-common1" ng-model="selData" ng-click="showPopup()" readonly placeholder="请选择" style="height: 30px;border: solid 1px #A1A1A1;padding: 0 5px" >
+        </div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-h40">
+        <div class="neu-fontBlack neu-list-L40">单据号</div>
+        <div class="neu-fontGray neu-list-R40" ng-if="hasDeal">{{contentData.hxDocNo}}</div>
+        <div class="neu-fontGray neu-list-R40" ng-if="!hasDeal" style="width: 60%;">
+          <input type="text" class="neu-input-border neu-input-common1" id="hxDocNo" value={{contentData.hxDocNo}} style="height: 30px;border: solid 1px #A1A1A1;padding: 0 5px;" >
+        </div>
+      </div>
+
+      <div class="neu-font-7 neu-border-top neu-border-btm" ng-if="!hasDeal" style="height: 68px">
+        <div class="neu-fontBlack neu-list-L" style="padding-left: 15px;height: 40px;line-height: 40px;">说明：</div>
+        <div class="neu-fontGray neu-list-inputR" style="height: 65px">
+          <textarea class="neu-input-border neu-textarea-common" ng-model="text.confirmDesc"></textarea>
+        </div>
+      </div>
+      <div class="neu-font-7 neu-border-top neu-border-bottom" ng-if="hasDeal">
+        <div class="neu-fontBlack auto-line-dv1">说明</div>
+        <div class="neu-fontGray neu-list-R" ng-if="contentData.remark.length<13">{{contentData.remark}}</div>
+        <div class="neu-fontGray auto-line-dv2" ng-if="contentData.remark.length>=13">{{contentData.remark}}</div>
+      </div>
+
+    </div>
+
+  </ion-content>
+
+
+  <ion-footer-bar class="stable-bg" ng-if="!hasDeal">
+    <button class="button button-clear" style="width: 5%;"></button>
+    <button class="button button-clear" style="width: 33%;color: #009E9F" ng-click="approvalReply()"><a class="icon ion-android-done coHx"></a>通过</button>
+    <button class="button button-clear" style="width: 24%;"></button>
+    <button class="button button-clear" style="width: 33%;color: #888888;" ng-click="approvalInvalid()"><a class="icon icon-small ion-android-close wx-gray"></a>驳回</button>
+    <button class="button button-clear" style="width: 5%;"></button>
+  </ion-footer-bar>
+
+<!--  <ion-footer-bar class="stable-bg" ng-if="!hasDeal">
+    <button class="button button-clear button-positive" style="width: 33%" ng-click="approvalReply()">确认</button>
+    <button class="button button-clear button-assertive" style="width: 33%" ng-click="approvalInvalid()">驳回</button>
+  </ion-footer-bar>-->
+
+</ion-view>

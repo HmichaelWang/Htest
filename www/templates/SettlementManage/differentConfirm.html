@@ -1,0 +1,61 @@
+<ion-view view-title="差异确认" hide-nav-bar="true" class="all-detail">
+
+  <style>
+    input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+      padding: 2px 0 0 0;
+    }
+    .list-inset .item.item-input input{
+      padding-top: 4px;
+    }
+/*    input:-moz-placeholder, textarea:-moz-placeholder {
+      color: red;
+    }*/
+/*    input::-moz-placeholder, textarea::-moz-placeholder {
+      color: red;
+    }*/
+/*    input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+      color: red;
+    }*/
+  </style>
+
+  <div class="bar neu-stable-bar neu-tab2-top">
+    <div style="width: 25%"></div>
+    <div class="neu-tab2 neu-tab2-left" ng-class="{ 'neu-tab2-selected':cateShow==0}" ng-click="showCate(0)">未确认</div>
+    <div class="neu-tab2 neu-tab2-right" ng-class="{ 'neu-tab2-selected':cateShow==1}" ng-click="showCate(1)">已确认</div>
+    <div style="width: 25%"></div>
+  </div>
+  <div class="neu-search marT-55">
+    <div class="list list-inset" style="display: flex">
+      <label class="item item-input" style="width:80%;height: 36px">
+        <input type="text" placeholder="客户名称关键字" ng-model="search.customerName">
+        <button class="search ion-ios-search coHx"></button>
+      </label>
+      <div class="neu-Fright top-search-dv">
+        <button class="button-clear top-search-btn" style="background-color: #009E9F;color: #F7F7F7;" ng-click="openModal()">高级查询</button>
+      </div>
+
+    </div>
+  </div>
+
+  <ion-content  class="narT-107">
+    <div style="text-align: center"><ion-spinner icon="android" ng-if="spTip==0"></ion-spinner></div>
+
+    <ion-list class="neu-list">
+      <ion-item class="item-icon-right" ng-repeat="item in diffList | filter:search" ng-click="clickToDetail(item)">
+        <p>客户名称：<span class="wx-gray neu-list-RL">{{item.customerName}}</span></p>
+        <!--<p>大连锁名称：<span class="wx-gray neu-list-RL">{{item.csTypeName}}</span></p>-->
+        <p>单据类型：<span class="wx-gray neu-list-RL">{{item.csDocTypeName}}</span></p>
+        <p>差异单号：<span class="wx-gray neu-list-RL">{{item.diffDetailNo}}</span></p>
+       <!-- <p>差异属性：<span class="wx-gray neu-list-RL">{{item.diffFlag}}</span></p>-->
+        <p ng-if="cateShow==1">状态：<span class="wx-gray neu-list-RL">{{item.statusFlagName}}</span></p>
+        <p>差异日期：<span class="wx-gray neu-list-RL">{{item.diffDate}}</span></p>
+
+        <i class="icon ion-ios-arrow-right" style="color: #ddd;"></i>
+      </ion-item>
+    </ion-list>
+
+    <p class="tip" style="margin-top:15px;" ng-if="spTip==1">暂无数据</p>
+
+  </ion-content>
+
+</ion-view>
